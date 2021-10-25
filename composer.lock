@@ -1,0 +1,65 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "4d36306397684ba92e9159a85c79933b",
+    "packages": [
+        {
+            "name": "apinstein/mp",
+            "version": "v1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/welltime/mp.git",
+                "reference": "c71a5b3f30052b4c4adf32c1a4c4d93f0f0cccad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/welltime/mp/zipball/c71a5b3f30052b4c4adf32c1a4c4d93f0f0cccad",
+                "reference": "c71a5b3f30052b4c4adf32c1a4c4d93f0f0cccad",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "bin": [
+                "mp"
+            ],
+            "type": "library",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alan Pinstein",
+                    "email": "apinstein@mac.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Migrations manager.",
+            "homepage": "http://github.com/apinstein/mp",
+            "keywords": [
+                "database",
+                "migrations"
+            ],
+            "support": {
+                "source": "https://github.com/welltime/mp/tree/v1.0.5"
+            },
+            "time": "2020-09-18T11:13:17+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "ext-pdo": "*",
+        "ext-json": "*",
+        "ext-openssl": "*"
+    },
+    "platform-dev": [],
+    "plugin-api-version": "2.1.0"
+}

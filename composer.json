@@ -1,0 +1,14 @@
+{
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/welltime/mp"
+    }
+  ],
+  "require": {
+    "ext-pdo": "*",
+    "ext-json": "*",
+    "ext-openssl": "*",
+    "apinstein/mp": "^1.0.4"
+  }
+}
