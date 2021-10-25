@@ -18,7 +18,6 @@ sudo -u postgres -i psql -d bank -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEM
 
 # mysql
 sudo -u root -i mysql -e "CREATE USER '$DB_USER'@'localhost' IDENTIFIED BY '$DB_PASSWORD'"
-
 sudo -u root -i mysql -e "GRANT ALL PRIVILEGES ON * . * TO '$DB_USER'@'localhost'"
 sudo -u root -i mysql -e "FLUSH PRIVILEGES"
 
@@ -32,5 +31,4 @@ composer install
 sudo -u root -i mysql -e "create database public"
 sudo -u root -i mysql public -e "create table mp_version ( version text )"
 sudo -u root -i mysql public -e "insert into mp_version values ('0')"
-
 sudo ./vendor/bin/mp -x"mysql:dbname=public;user=$DB_USER;password=$DB_PASSWORD;host=localhost" -m
