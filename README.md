@@ -11,7 +11,12 @@ sudo apt -y install git
 git clone https://github.com/zhdanov/hackathon-2021-10-20.git
 cd hackathon-2021-10-20
 ./install.bash
+
 php make-fico.php
+
+php -S 0.0.0.0:8001 /home/gbc_user/hackathon-2021-10-20/index.php
+
+# открываем в браузере: http://127.0.0.1:8001/
 ```
 
 ## Таблица FICO (БД public)
@@ -46,6 +51,16 @@ mysql> desc FICO;
 | COUNT_NEW_CREDITS        | Количество новых кредитов (последний квартал)
 | FICO                     | Набранный процент
 +--------------------------+
+```
+
+## Вес колонок для расчета FICO 
+
+```
+35%  AMOUNT_REPAID_DEBTS
+30%  AMOUNT_DEBT_NOW
+15%  LENGTH_CREDIT_HISTORY
+10%  COUNT_DIFFERENT_ACCOUNTS
+10%  COUNT_NEW_CREDITS
 ```
 
 ## Описание модели FICO 
