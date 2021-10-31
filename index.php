@@ -25,14 +25,25 @@ require(__DIR__ . '/bootstrap.php');
       <th scope="col">#</th>
       <th scope="col">ФИО</th>
       <th scope="col">FICO</th>
+      <th scope="col">Снапшот</th>
     </tr>
   </thead>
   <tbody>
-<?php foreach (\model\fico\find($dbh_bank, $dbh_fico) as $row) { ?>
+<?php foreach (\model\fico\find($dbh_bank, $dbh_public) as $row) { ?>
     <tr>
     <th scope="row"><?=$row['id']?></th>
       <td><?=$row['fio']?></td>
       <td<?=((int)$row['fico'])<=40 && ((int)$row['fico'])!=0?' style="color: red;"':''?>><?=$row['fico']?></td>
+      <td>
+<?php if($row['snapshot']) { ?>
+        <a href="/actions/snapshot-get.php?app_id=<?=$row['id']?>">смотреть</a>
+<?php } else { ?>
+        <form method="POST" action="/actions/snapshot-save.php">
+          <input type="hidden" name="app_id" value="<?=$row['id']?>" />
+          <button class="btn btn-primary" type="submit">Сохранить</button>
+        </form>
+<?php } ?>
+      </td>
     </tr>
 <?php } ?>
   </tbody>

@@ -4,10 +4,10 @@ require(__DIR__ . '/bootstrap.php');
 
 
 // fill clients
-foreach (\model\fico\find($dbh_bank, $dbh_fico) as $row) {
-    $client_fico = $dbh_fico->query('SELECT * from FICO WHERE CLIENT_ID="' . $row['client_id'] . '"');
+foreach (\model\fico\find($dbh_bank, $dbh_public) as $row) {
+    $client_fico = $dbh_public->query('SELECT * from FICO WHERE CLIENT_ID="' . $row['client_id'] . '"');
     if (!$client_fico->rowCount()) {
-        $dbh_fico->query('INSERT INTO FICO (CLIENT_ID) VALUES("' . $row['client_id'] . '");');
+        $dbh_public->query('INSERT INTO FICO (CLIENT_ID) VALUES("' . $row['client_id'] . '");');
     }
 }
 
@@ -20,7 +20,7 @@ inner join prod_loans.loan_balance lb on lb.loan_id = l.loan_id
 group by c.client_id;
 ';
 foreach($dbh_bank->query($sql) as $row) {
-    $dbh_fico->query('UPDATE FICO SET AMOUNT_DEBT_NOW="'.$row['amount_debt_now'].'" WHERE CLIENT_ID="' . $row['client_id'] . '";');
+    $dbh_public->query('UPDATE FICO SET AMOUNT_DEBT_NOW="'.$row['amount_debt_now'].'" WHERE CLIENT_ID="' . $row['client_id'] . '";');
 }
 
 // fill OVERDUE_AMOUNT_NOW
@@ -32,5 +32,5 @@ inner join prod_loans.loan_balance lb on lb.loan_id = l.loan_id
 group by c.client_id;
 ';
 foreach($dbh_bank->query($sql) as $row) {
-    $dbh_fico->query('UPDATE FICO SET OVERDUE_AMOUNT_NOW="'.$row['overdue_amount_now'].'" WHERE CLIENT_ID="' . $row['client_id'] . '";');
+    $dbh_public->query('UPDATE FICO SET OVERDUE_AMOUNT_NOW="'.$row['overdue_amount_now'].'" WHERE CLIENT_ID="' . $row['client_id'] . '";');
 }

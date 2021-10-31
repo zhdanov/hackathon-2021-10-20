@@ -10,13 +10,14 @@
 
 ```bash
 sudo apt -y install git
+cd $HOME
 git clone https://github.com/zhdanov/hackathon-2021-10-20.git
 cd hackathon-2021-10-20
 ./install.bash
 
 php make-fico.php
 
-php -S 0.0.0.0:8001 /home/gbc_user/hackathon-2021-10-20/index.php
+php -S 0.0.0.0:8001 -t /home/gbc_user/hackathon-2021-10-20/
 
 # открываем в браузере: http://127.0.0.1:8001/
 ```

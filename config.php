@@ -1,17 +1,19 @@
 <?php
 
 $config = [
-    'mysql' => [
+    'prod_ins' => [
         'user'     => 'gbc',
         'password' => 'qWe12_34',
         'dbname'   => 'prod_ins'
     ],
-    'pgsql' => [
+    'bank' => [
         'user'     => 'gbc',
         'password' => 'qWe12_34',
         'dbname' => 'bank'
     ],
-    'fico' => [
+    'public' => [
+        'user'     => 'gbc',
+        'password' => 'qWe12_34',
         'dbname'   => 'public'
     ],
 ];
