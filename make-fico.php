@@ -25,3 +25,6 @@ require(__DIR__ . '/bootstrap.php');
 
 // fill COUNT_NEW_CREDITS
 \model\fico\fill_count_new_credits($dbh_bank, $dbh_public);
+
+// fill FICO
+\model\fico\fill_fico($dbh_bank, $dbh_public);

@@ -33,7 +33,7 @@ require(__DIR__ . '/bootstrap.php');
     <tr>
     <th scope="row"><?=$row['id']?></th>
       <td><?=$row['fio']?></td>
-      <td<?=((int)$row['fico'])<=40 && ((int)$row['fico'])!=0?' style="color: red;"':''?>><?=$row['fico']?></td>
+      <td<?=((int)$row['fico'])>=60?' style="color: green;font-weight:bold;"':''?><?=((int)$row['fico'])<=15?' style="color: red;"':''?>><?=$row['fico']?></td>
       <td>
 <?php if($row['snapshot']) { ?>
         <a href="/actions/snapshot-get.php?app_id=<?=$row['id']?>">смотреть</a>
