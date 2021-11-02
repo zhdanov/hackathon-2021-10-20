@@ -9,6 +9,7 @@
     "ext-pdo": "*",
     "ext-json": "*",
     "ext-openssl": "*",
-    "apinstein/mp": "^1.0.4"
+    "apinstein/mp": "^1.0.4",
+    "neoxygen/neoclient": "^3.3"
   }
 }

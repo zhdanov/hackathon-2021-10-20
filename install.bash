@@ -5,7 +5,7 @@ DB_PASSWORD=qWe12_34
 
 sudo apt -y install vim
 sudo apt -y install net-tools
-sudo apt -y install php7.4-cli php-pgsql php-mysqli php-zip
+sudo apt -y install php7.4-cli php-pgsql php-mysqli php-zip php-mbstring php-curl
 sudo apt -y install wget php-zip unzip
 
 # postgres

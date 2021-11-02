@@ -11,6 +11,10 @@ $config = [
         'password' => 'qWe12_34',
         'dbname' => 'bank'
     ],
+    'neo4j' => [
+        'user'     => 'neo4j',
+        'password' => 'neo4j',
+    ],
     'public' => [
         'user'     => 'gbc',
         'password' => 'qWe12_34',
