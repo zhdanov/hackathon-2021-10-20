@@ -17,7 +17,7 @@ function find($dbh_bank, $dbh_public) {
     }
 
     foreach($list_bank as $row) {
-        $list[] = ['id'=>$row['app_id'], 'client_id'=> $row['cust_id'], 'fio'=> $row['cust_fio'], 'fico'=> $list_fico[$row['cust_id']]['FICO'] . '%', 'snapshot'=>(isset($list_snapshot[$row['app_id']])?true:false)];
+        $list[] = ['id'=>$row['app_id'], 'client_id'=> $row['cust_id'], 'fio'=> $row['cust_fio'], 'fico'=> ($list_fico[$row['cust_id']]['FICO']??0) . '%', 'snapshot'=>(isset($list_snapshot[$row['app_id']])?true:false)];
     }
 
     return $list;
