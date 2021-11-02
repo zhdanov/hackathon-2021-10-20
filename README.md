@@ -33,7 +33,7 @@ mysql> desc FICO;
 | AMOUNT_DEBT_NOW          | decimal(12,4) | YES  |     | NULL    |       |
 | OVERDUE_AMOUNT_NOW       | decimal(12,4) | YES  |     | NULL    |       |
 | AMOUNT_BALANCES          | decimal(12,4) | YES  |     | NULL    |       |
-| LENGTH_CREDIT_HISTORY    | timestamp     | YES  |     | NULL    |       |
+| LENGTH_CREDIT_HISTORY    | bigint        | YES  |     | NULL    |       |
 | COUNT_DIFFERENT_ACCOUNTS | bigint        | YES  |     | NULL    |       |
 | COUNT_NEW_CREDITS        | bigint        | YES  |     | NULL    |       |
 | FICO                     | int           | YES  |     | NULL    |       |
@@ -49,7 +49,7 @@ mysql> desc FICO;
 | AMOUNT_DEBT_NOW          | Сумма долга на текущий момент
 | OVERDUE_AMOUNT_NOW       | Сумма просрочек на текущий момент
 | AMOUNT_BALANCES          | Сумма остатка на счетах
-| LENGTH_CREDIT_HISTORY    | Длина кредитной истории
+| LENGTH_CREDIT_HISTORY    | Длина кредитной истории в днях
 | COUNT_DIFFERENT_ACCOUNTS | Количество разных счетов (больше -- лучше)
 | COUNT_NEW_CREDITS        | Количество новых кредитов (последний квартал)
 | FICO                     | Набранный процент
