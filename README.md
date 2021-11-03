@@ -15,11 +15,14 @@ git clone https://github.com/zhdanov/hackathon-2021-10-20.git
 cd hackathon-2021-10-20
 ./install.bash
 
+# для раздупления neo4j, рекомендуется открыть в браузере:
+# http://localhost:7474/browser/
+
+# расчет FICO
 php make-fico.php
 
+# интерфейс станет доступен в браузере: http://127.0.0.1:8001/
 php -S 0.0.0.0:8001 -t /home/gbc_user/hackathon-2021-10-20/
-
-# открываем в браузере: http://127.0.0.1:8001/
 ```
 
 ## Таблица FICO (БД public)
