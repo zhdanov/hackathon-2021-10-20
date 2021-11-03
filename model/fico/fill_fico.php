@@ -19,7 +19,7 @@ function fill_fico($dbh_bank, $dbh_public) {
         //   Сумма погашенных долгов
         $total -= $row['AMOUNT_REPAID_DEBTS']; 
         //   Сумма просрочек на текущий момент
-        $total += $row['AMOUNT_DEBT_NOW'];
+        $total += $row['OVERDUE_AMOUNT_NOW'];
         //   Сумма остатка на счетах
         $total -= $row['AMOUNT_BALANCES']; 
         if ($total <= 0) {
@@ -47,11 +47,11 @@ function fill_fico($dbh_bank, $dbh_public) {
 
         // FICO 10%
         //   Количество разных счетов (больше -- лучше)
-        if ($row['LENGTH_CREDIT_HISTORY'] >= 30) {
+        if ($row['COUNT_DIFFERENT_ACCOUNTS'] >= 30) {
             $fico += 10; 
-        } else if ($row['LENGTH_CREDIT_HISTORY'] >= 20) {
+        } else if ($row['COUNT_DIFFERENT_ACCOUNTS'] >= 20) {
             $fico += 7; 
-        } else if ($row['LENGTH_CREDIT_HISTORY'] >= 10) {
+        } else if ($row['COUNT_DIFFERENT_ACCOUNTS'] >= 10) {
             $fico += 3; 
         }
 
