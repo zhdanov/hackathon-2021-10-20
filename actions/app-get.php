@@ -61,6 +61,7 @@ $app = \model\app\find((int)$_GET['app_id'], $clt_mongo, $dbh_bank, $dbh_public)
   </tbody>
 </table>
 
+<br />
 <h2>Банк</h2>
 <table class="table table-sm" style="width: 650px">
   <tbody>
@@ -145,9 +146,53 @@ $app = \model\app\find((int)$_GET['app_id'], $clt_mongo, $dbh_bank, $dbh_public)
   </tbody>
 </table>
 
+<br />
+<?php
+
+$exists_products = [];
+$sql = "select icp.INSURANCE_PRODUCT_ID as product_id from CLIENT as c inner join ISUTANCE_CONTRACT_X_CLIENT cc on cc.CLIENT_ID=c.CLIENT_ID left join ISUTANCE_CONTRACT ic on ic.CONTRACT_ID=cc.CONTRACT_ID left join ISUTANCE_CONTRACT_X_PRODUCT icp on icp.CONTRACT_ID=cc.CONTRACT_ID WHERE c.CLIENT_ID='".$app['app']['cust_id']."'";
+foreach ($dbh_ins->query($sql) as $row) {
+    $exists_products[] = $row['product_id'];
+}
+
+$list_inst = [];
+
+foreach ($dbh_ins->query('select * from INSURANCE_PRODUCT_2_GROUP') as $row) {
+    $list_inst[$row['INSURANCE_PRODUCT_ID']] = str_replace('""', '"',$row['INSURANCE_PRODUCT_2_GROUP']);
+}
+foreach ($dbh_ins->query('select * from INSURANCE_PRODUCT_3_GROUP') as $row) {
+    $list_inst[$row['INSURANCE_PRODUCT_ID']] = str_replace('""', '"',$row['INSURANCE_PRODUCT_3_GROUP']);
+}
+?>
+
 <h2>Доступные для продажи продукты</h2>
+<?php
+foreach ($list_inst as $product_id => $name) {
+    if (!in_array($product_id, $exists_products)) {
+        echo $name . '<br />';
+    }
+}
+?>
+
+<br />
+<h2>Уже купленные продукты</h2>
+<?php
+$i = 0;
+foreach ($list_inst as $product_id => $name) {
+    if (in_array($product_id, $exists_products)) {
+        echo $name . '<br />';
+	$i++;
+    }
+}
+if (!$i) {
+?>
+<i>не найдено</i>
+<?php
+}
+?>
 
 <?php if (isset($app['interview']['answers_on_questions'])) { ?>
+<br />
 <h2>Интервью</h2>
 
 <div style="width: 650px">
