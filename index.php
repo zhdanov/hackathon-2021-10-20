@@ -31,7 +31,7 @@ require(__DIR__ . '/bootstrap.php');
   <tbody>
 <?php foreach (\model\fico\find($dbh_bank, $dbh_public) as $row) { ?>
     <tr>
-    <th scope="row"><?=$row['id']?></th>
+    <th scope="row"><a href="/actions/app-get.php?app_id=<?=$row['id']?>"><?=$row['id']?></a></th>
       <td><?=$row['fio']?></td>
       <td<?=((int)$row['fico'])>=60?' style="color: green;font-weight:bold;"':''?><?=((int)$row['fico'])<=15?' style="color: red;"':''?>><?=$row['fico']?></td>
       <td>

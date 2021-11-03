@@ -19,5 +19,7 @@ require(__DIR__ . '/model/fico/fill_count_different_accounts.php');
 require(__DIR__ . '/model/fico/fill_count_new_credits.php');
 require(__DIR__ . '/model/fico/fill_fico.php');
 
+require(__DIR__ . '/model/app/find.php');
+
 require(__DIR__ . '/model/snapshot/find.php');
 require(__DIR__ . '/model/snapshot/save.php');
