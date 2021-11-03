@@ -26,6 +26,8 @@ $row = \model\snapshot\find((int)$_GET['app_id'], $dbh_public);
       <button class="btn btn-primary" type="submit">Обновить</button>
     </form>
 
+    <br />
+
     <h2>Дата</h2>
     <p><?=$row['CREATED']?></p>
 
