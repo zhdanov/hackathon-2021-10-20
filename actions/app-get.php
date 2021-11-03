@@ -21,7 +21,46 @@ $app = \model\app\find((int)$_GET['app_id'], $dbh_bank, $dbh_public);
   <body>
     <h1><a href="/">Заявки</a> / Детализация #<?=(int)$_GET['app_id']?></h1>
 
-<h2>FICO</h2>
+<br />
+<h2>FICO <?=$app['fico']['FICO']?>%</h2>
+<table class="table table-sm" style="width: 450px">
+  <tbody>
+    <tr>
+      <th scope="row" rowspan="3">35%</th>
+      <td>Сумма погашенных долгов</td>
+      <td><?=$app['fico']['AMOUNT_REPAID_DEBTS']?></td>
+    </tr>
+    <tr>
+      <td>Сумма просрочек на текущий момент</td>
+      <td><?=$app['fico']['OVERDUE_AMOUNT_NOW']?></td>
+    </tr>
+    <tr>
+      <td>Сумма остатка на счетах</td>
+      <td><?=$app['fico']['AMOUNT_BALANCES']?></td>
+    </tr>
+    <tr>
+      <th scope="row">30%</th>
+      <td>Сумма долга на текущий момент</td>
+      <td><?=$app['fico']['AMOUNT_DEBT_NOW']?></td>
+    </tr>
+    <tr>
+      <th scope="row">15%</th>
+      <td>Длина кредитной истории в днях</td>
+      <td><?=$app['fico']['LENGTH_CREDIT_HISTORY']?></td>
+    </tr>
+    <tr>
+      <th scope="row">10%</th>
+      <td>Количество разных счетов</td>
+      <td><?=$app['fico']['COUNT_DIFFERENT_ACCOUNTS']?></td>
+    </tr>
+    <tr>
+      <th scope="row">10%</th>
+      <td>Количество новых кредитов</td>
+      <td><?=$app['fico']['COUNT_NEW_CREDITS']?></td>
+    </tr>
+  </tbody>
+</table>
+
 <h2>Банк</h2>
 <table class="table table-sm" style="width: 650px">
   <tbody>
