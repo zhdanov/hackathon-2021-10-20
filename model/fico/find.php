@@ -1,6 +1,6 @@
 <?php namespace model\fico;
 
-function find($dbh_bank, $dbh_public) {
+function find($dbh_bank, $clt_mongo, $dbh_public) {
 
     $list_bank = $dbh_bank->query('SELECT * from prod_apps.applications');
 
@@ -17,7 +17,11 @@ function find($dbh_bank, $dbh_public) {
     }
 
     foreach($list_bank as $row) {
-        $list[] = ['id'=>$row['app_id'], 'client_id'=> $row['cust_id'], 'fio'=> $row['cust_fio'], 'fico'=> ($list_fico[$row['cust_id']]['FICO']??0) . '%', 'snapshot'=>(isset($list_snapshot[$row['app_id']])?true:false)];
+
+        $interview = $clt_mongo->interview->find(['app_id'=>(int)$row['app_id']]);
+        $interview = iterator_to_array($interview);
+
+        $list[] = ['id'=>$row['app_id'], 'client_id'=> $row['cust_id'], 'fio'=> $row['cust_fio'], 'fico'=> ($list_fico[$row['cust_id']]['FICO']??0) . '%', 'snapshot'=>(isset($list_snapshot[$row['app_id']])?true:false), 'interview'=>count($interview)];
     }
 
     return $list;

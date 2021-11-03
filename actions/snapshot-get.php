@@ -18,7 +18,7 @@ $row = \model\snapshot\find((int)$_GET['app_id'], $dbh_public);
 
     <title>Заявки / Снапшот</title>
   </head>
-  <body>
+  <body style="padding: 10px;">
     <h1><a href="/">Заявки</a> / Снапшот</h1>
 
     <form method="POST" action="/actions/snapshot-save.php">

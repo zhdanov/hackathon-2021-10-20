@@ -10,6 +10,7 @@
     "ext-json": "*",
     "ext-openssl": "*",
     "apinstein/mp": "^1.0.4",
-    "neoxygen/neoclient": "^3.3"
+    "neoxygen/neoclient": "^3.3",
+    "mongodb/mongodb": "^1.5"
   }
 }

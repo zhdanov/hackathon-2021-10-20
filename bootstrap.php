@@ -6,6 +6,7 @@ require(__DIR__ . '/config.php');
 require(__DIR__ . '/connect/connect-bank.php');
 require(__DIR__ . '/connect/connect-prod_ins.php');
 require(__DIR__ . '/connect/connect-neo4j.php');
+require(__DIR__ . '/connect/connect-mongodb.php');
 require(__DIR__ . '/connect/connect-public.php');
 
 require(__DIR__ . '/model/fico/find.php');

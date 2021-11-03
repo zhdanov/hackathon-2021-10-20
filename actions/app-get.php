@@ -2,7 +2,7 @@
 
 require(__DIR__ . '/../bootstrap.php');
 
-$app = \model\app\find((int)$_GET['app_id'], $dbh_bank, $dbh_public);
+$app = \model\app\find((int)$_GET['app_id'], $clt_mongo, $dbh_bank, $dbh_public);
 
 ?>
 
@@ -18,11 +18,11 @@ $app = \model\app\find((int)$_GET['app_id'], $dbh_bank, $dbh_public);
 
     <title>Заявки / Детализация #<?=(int)$_GET['app_id']?></title>
   </head>
-  <body>
+  <body style="padding: 10px;">
     <h1><a href="/">Заявки</a> / Детализация #<?=(int)$_GET['app_id']?></h1>
 
 <br />
-<h2>FICO <?=$app['fico']['FICO']?>%</h2>
+<h2>FICO <span<?=((int)$app['fico']['FICO'])>=60?' style="color: green;font-weight:bold;"':''?><?=((int)$app['fico']['FICO'])<=15?' style="color: red;"':''?>><?=$app['fico']['FICO']?>%</span></h2>
 <table class="table table-sm" style="width: 450px">
   <tbody>
     <tr>
@@ -147,7 +147,20 @@ $app = \model\app\find((int)$_GET['app_id'], $dbh_bank, $dbh_public);
 
 <h2>Доступные для продажи продукты</h2>
 
+<?php if (isset($app['interview']['answers_on_questions'])) { ?>
 <h2>Интервью</h2>
+
+<div style="width: 650px">
+<?php foreach ($app['interview']['answers_on_questions'] as $key => $text) { ?>
+<?=$key[0]=='A'?'<div style="margin-left: 40px;">':''?>
+<?=$key[0]=='I'?'<i>':''?>
+<?=$text?><br />
+<?=$key[0]=='I'?'</i>':''?>
+<?=$key[0]=='A'?'</div>':''?>
+<?=$key[0]=='A'?'<br />':''?>
+<?php } ?>
+</div>
+<?php } ?>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

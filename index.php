@@ -16,24 +16,26 @@ require(__DIR__ . '/bootstrap.php');
 
     <title>Заявки</title>
   </head>
-  <body>
+  <body style="padding: 10px;">
     <h1>Заявки</h1>
 
 <table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">ФИО</th>
       <th scope="col">FICO</th>
+      <th scope="col">ФИО</th>
+      <th class="text-center" scope="col">Интервью</th>
       <th scope="col">Снапшот</th>
     </tr>
   </thead>
   <tbody>
-<?php foreach (\model\fico\find($dbh_bank, $dbh_public) as $row) { ?>
+<?php foreach (\model\fico\find($dbh_bank, $clt_mongo, $dbh_public) as $row) { ?>
     <tr>
     <th scope="row"><a href="/actions/app-get.php?app_id=<?=$row['id']?>"><?=$row['id']?></a></th>
-      <td><?=$row['fio']?></td>
       <td<?=((int)$row['fico'])>=60?' style="color: green;font-weight:bold;"':''?><?=((int)$row['fico'])<=15?' style="color: red;"':''?>><?=$row['fico']?></td>
+      <td><?=$row['fio']?></td>
+      <td class="text-center"><?=$row['interview']?$row['interview']:'-'?></td>
       <td>
 <?php if($row['snapshot']) { ?>
         <a href="/actions/snapshot-get.php?app_id=<?=$row['id']?>">смотреть</a>
