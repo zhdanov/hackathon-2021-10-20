@@ -24,7 +24,6 @@ php -S 0.0.0.0:8001 -t /home/gbc_user/hackathon-2021-10-20/
 
 ## Таблица FICO (БД public)
 ```
-mysql> desc FICO;
 +--------------------------+---------------+------+-----+---------+-------+
 | Field                    | Type          | Null | Key | Default | Extra |
 +--------------------------+---------------+------+-----+---------+-------+
@@ -64,6 +63,34 @@ mysql> desc FICO;
 15%  LENGTH_CREDIT_HISTORY
 10%  COUNT_DIFFERENT_ACCOUNTS
 10%  COUNT_NEW_CREDITS
+```
+
+## Таблица SNAPSHOT (БД public)
+
+```
++------------+-----------+------+-----+---------+-------+
+| Field      | Type      | Null | Key | Default | Extra |
++------------+-----------+------+-----+---------+-------+
+| APP_ID     | bigint    | YES  |     | NULL    |       |
+| CREATED    | timestamp | YES  |     | NULL    |       |
+| PROD_APPS  | text      | YES  |     | NULL    |       |
+| PROD_INS   | text      | YES  |     | NULL    |       |
+| PROD_LOANS | text      | YES  |     | NULL    |       |
+| FICO       | text      | YES  |     | NULL    |       |
++------------+-----------+------+-----+---------+-------+
+```
+
+## Описание колонок таблицы SNAPSHOT
+
+```
++------------+
+| APP_ID     | Идентификатор заявки
+| CREATED    | Дата создания снапшота
+| PROD_APPS  | Срез по клиенту из схемы prod_apps
+| PROD_INS   | Срез по клиенту из базы prod_ins
+| PROD_LOANS | Срез по клиенту из схемы prod_loans
+| FICO       | Срез по клиенту из таблицы FICO
++------------+
 ```
 
 ## Описание модели FICO 
