@@ -13,7 +13,8 @@ function save($app_id, $dbh_bank, $dbh_ins, $dbh_public) {
     }
     $prod_loans = json_encode($prod_loans, JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
 
-    $stmt = $dbh_ins->query("SELECT * from CLIENT where CLIENT_ID='".$row_prod_apps['cust_id']."'");
+    $sql = "select * from CLIENT as c inner join ISUTANCE_CONTRACT_X_CLIENT cc on cc.CLIENT_ID=c.CLIENT_ID left join ISUTANCE_CONTRACT ic on ic.CONTRACT_ID=cc.CONTRACT_ID left join ISUTANCE_CONTRACT_X_PRODUCT icp on icp.CONTRACT_ID=cc.CONTRACT_ID WHERE c.CLIENT_ID='".$row_prod_apps['cust_id']."'";
+    $stmt = $dbh_ins->query($sql);
     $prod_ins = [];
     foreach ($stmt as $row) {
         $prod_ins[] = $row;
