@@ -3,7 +3,7 @@ require(__DIR__ . '/bootstrap.php');
 
 
 // fill clients
-\model\fico\fill_clients($dbh_bank, $dbh_public);
+\model\fico\fill_clients($dbh_bank, $clt_mongo, $dbh_public);
 
 // fill AMOUNT_REPAID_DEBTS
 \model\fico\fill_amount_repaid_debts($dbh_bank, $dbh_public);
