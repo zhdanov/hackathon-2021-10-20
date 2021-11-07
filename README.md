@@ -12,7 +12,7 @@
 
 ![](./demo.gif)
 
-## Установка
+## Установка внутри ВМ
 
 ```bash
 sudo apt -y install git
@@ -30,6 +30,8 @@ php make-fico.php
 # интерфейс станет доступен в браузере: http://127.0.0.1:8001/
 php -S 0.0.0.0:8001 -t /home/gbc_user/hackathon-2021-10-20/
 ```
+
+Для установки на чистой машине потребуется развернуть postgresql, mysql, neo4j и mongodb ([дампы с примерами данных](./assests/glowbyte/dump)).
 
 ## Таблица FICO (БД public)
 ```
